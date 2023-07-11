@@ -2,7 +2,7 @@
   <div>
     <div>Page: "{{ route.name }}"</div>
     <div>
-      <div>Test i18n. Msg: {{ lz.t('hello') }}</div>
+      <div>Test i18n. Msg: {{ i18n.t('hello') }}</div>
       <button @click="onTestChangeLanguageBtnClick">
         Click Me
       </button>
@@ -19,10 +19,10 @@
 <script lang="ts" setup>
 import { useRoute } from 'vue-router';
 import { useExampleStore } from '@/store/examples';
-import { changeLanguage, LanguageCode, useLocalization, currentLanguageIs } from '@/localization';
+import { changeLanguage, LanguageCode, useI18n, currentLanguageIs } from '@/i18n';
 
 const route = useRoute();
-const lz = useLocalization();
+const i18n = useI18n();
 
 const exampleStore = useExampleStore();
 

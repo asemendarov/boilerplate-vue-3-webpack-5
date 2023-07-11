@@ -1,16 +1,19 @@
 import { nextTick } from 'vue';
-import { createI18n, useI18n } from 'vue-i18n';
+import {
+  createI18n as createVueI18n,
+  useI18n as useVueI18n,
+} from 'vue-i18n';
 import type { UseI18nOptions } from 'vue-i18n';
 import type { Plugin, App } from 'vue';
 import type { LanguageCode } from './enums';
-import type { LocalizationSchema } from './types';
+import type { UseI18nCustomOptions } from './types';
 
-export const i18n = createI18n({
+export const vueI18n = createVueI18n({
   legacy: false,
 });
 
 export const loadedLanguageList: LanguageCode[] = [];
-export const currentLanguage = i18n.global.locale;
+export const currentLanguage = vueI18n.global.locale;
 export const currentLanguageIs = (locale: LanguageCode) => currentLanguage.value === locale;
 
 /**
@@ -21,7 +24,7 @@ export const currentLanguageIs = (locale: LanguageCode) => currentLanguage.value
  * axios.defaults.headers.common['Accept-Language'] = locale
  */
 export const setLanguage = (locale: LanguageCode) => {
-  i18n.global.locale.value = locale;
+  vueI18n.global.locale.value = locale;
 
   const htmlEl = document.querySelector('html')!;
   htmlEl.setAttribute('lang', locale);
@@ -32,9 +35,7 @@ export const loadLocaleMessages = async (locale: LanguageCode) => {
     /* webpackChunkName: "locale-[request]" */ `./locales/${locale}.json`
   );
 
-  setLanguage(locale);
-
-  i18n.global.setLocaleMessage(locale, messages.default);
+  vueI18n.global.setLocaleMessage(locale, messages.default);
 
   return nextTick();
 };
@@ -49,13 +50,12 @@ export const changeLanguage = async (locale: LanguageCode) => {
   setLanguage(locale);
 };
 
-// eslint-disable-next-line max-len
-export const useLocalization = <Options extends UseI18nOptions = UseI18nOptions<{ message: LocalizationSchema }>>(options?: Options) => useI18n(options);
+export const useI18n = <T extends UseI18nOptions = UseI18nCustomOptions>(options?: T) => useVueI18n(options);
 
 const plugin: Plugin = (app: App) => {
   changeLanguage(VUE_APP_LANGUAGE as LanguageCode);
 
-  app.use(i18n);
+  app.use(vueI18n);
 };
 
 export default plugin;
