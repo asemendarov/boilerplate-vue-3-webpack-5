@@ -1,9 +1,8 @@
-import { resolve } from 'path';
 import { spawn } from 'child_process';
+import { webpackConfigDir } from './paths';
 import type { SpawnOptions } from 'child_process';
 
-const configPath = resolve(__dirname, 'builder/webpack.config.ts');
-const CONFIG = `--config ${configPath}`;
+const CONFIG = `--config ${webpackConfigDir}`;
 const ENV = '--env';
 
 const opts: SpawnOptions = {
@@ -14,6 +13,7 @@ const opts: SpawnOptions = {
 const [,, param, ...args] = process.argv;
 
 function throwEnvs() {
+  // eslint-disable-next-line sonarjs/no-nested-template-literals
   return args[0] ? `${ENV} ${args.join(` ${ENV} `)}` : '';
 }
 

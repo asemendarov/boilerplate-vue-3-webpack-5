@@ -1,8 +1,13 @@
-import getDevServerConfig from './getDevServerConfig';
-import getPlugins from './getPlugins';
-import getRules from './getRules';
-import { distDir, srcDir, appDir, uiDir } from './paths';
-import getArgs from './getArgs';
+import {
+  uiDir,
+  appDir,
+  srcDir,
+  distDir,
+  getArgs,
+  getRules,
+  getPlugins,
+  getDevServerConfig,
+} from './builder';
 import type { Configuration } from 'webpack';
 import type { Target } from '@/types/builder';
 

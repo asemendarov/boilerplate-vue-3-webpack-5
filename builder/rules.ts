@@ -10,7 +10,7 @@ function getCssLoaders(isDev: boolean): RuleSetUseItem[] {
   ];
 }
 
-export default function getRules(target: Target): Rules {
+export function getRules(target: Target): Rules {
   const isDev = target.mode === 'development';
 
   const rules: Rules = [{

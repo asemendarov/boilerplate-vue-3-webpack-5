@@ -16,11 +16,11 @@
     "url": "https://github.com/asemendarov/boilerplate-vue-3-webpack-5"
   },
   "scripts": {
-    "build": "ts-node ./webpackRunner.ts",
-    "build:analyze": "ts-node ./webpackRunner.ts -- -a",
-    "serve": "ts-node ./webpackRunner.ts serve",
+    "serve": "ts-node ./builder/runner.ts serve",
+    "build": "ts-node ./builder/runner.ts",
+    "build:analyze": "ts-node ./builder/runner.ts -- -a",
     "prepare": "husky install",
-    "lint": "eslint --ext .ts,.vue ./src ./builder"
+    "lint": "eslint --ext .ts,.vue ./src ./builder ./webpack.config.ts"
   },
   "devDependencies": {
     "@types/minimist": "^1.2.2",
@@ -71,5 +71,6 @@
     "node": "18.14.1",
     "npm": "9.3.1",
     "yarn": "You must use NPM v9.3.1 (node v18.14.1) to install, not Yarn"
-  }
+  },
+  "license": "MIT"
 }

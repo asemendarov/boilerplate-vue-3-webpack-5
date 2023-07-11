@@ -5,8 +5,6 @@ const ERROR = 'error';
 const WARNING = 'warn';
 const NEVER = 'never';
 
-const webpackConfigPath = path.resolve(__dirname, 'builder/webpack.config.ts');
-
 module.exports = {
   parser: 'vue-eslint-parser',
   parserOptions: {
@@ -30,7 +28,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       webpack: {
-        config: webpackConfigPath,
+        config: path.resolve(__dirname, 'webpack.config.ts'),
       },
     },
   },

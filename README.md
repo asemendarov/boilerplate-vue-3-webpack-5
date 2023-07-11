@@ -28,8 +28,8 @@ analyze| a | false | параметр подключения `WebpackBundleAnaly
 ## Структура выполнения проекта
 ```mermaid
 graph TD;
-    npm(npm command) -- serve\build with flags --> webpackRunner(webpackRunner.ts);
-    webpackRunner -- компиляция через --> tsNode(ts-node);
+    npm(npm command) -- serve\build with flags --> runner(builder\runner.ts);
+    runner -- компиляция через --> tsNode(ts-node);
     tsNode -- serve --> webpack(webpack);
     tsNode -- build --> webpack;
     builder(builder files) -- getPlugins\getRules\... --> webpackCFG(webpack.config.ts) --> webpack;
@@ -46,10 +46,10 @@ graph TD;
 
 ### Builder
 Файлы:
-- [webpack.config](builder/webpack.config.ts) - результирующий конфиг для webpack
-- [getDevServerConfig](builder/getDevServerConfig.ts) - конфигуратор для dev server
-- [getPlugins](builder/getPlugins.ts) - конфигуратор для плагинов
-- [getRules](builder/getRules.ts) - конфигуратор для правил сборки
+- [webpack.config](webpack.config.ts) - результирующий конфиг для webpack
+- [getDevServerConfig](builder/devServerConfig.ts) - конфигуратор для dev server
+- [getPlugins](builder/plugins.ts) - конфигуратор для плагинов
+- [getRules](builder/rules.ts) - конфигуратор для правил сборки
 
 **Транспилятор**<br>
 В качестве транспилятора ts и минификатора использован [esbuild](https://esbuild.github.io) (альтернатива babel и terser),

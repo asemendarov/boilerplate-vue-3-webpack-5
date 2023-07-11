@@ -9,7 +9,7 @@ import { publicDir, templateDir } from './paths';
 import type { Target } from '@/types/builder';
 import type { Compiler, WebpackPluginInstance } from 'webpack';
 
-export default function getPlugins(target: Target): Plugins {
+export function getPlugins(target: Target): Plugins {
   const plugins: Plugins = [
     new HtmlWebpackPlugin({
       template: templateDir,

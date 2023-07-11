@@ -13,6 +13,6 @@ const config: Opts = {
   },
 };
 
-export default function getArgs(): BuildArgs {
+export function getArgs(): BuildArgs {
   return minimist(process.argv.slice(2), config) as BuildArgs;
 }
