@@ -1,10 +1,28 @@
-# Frontend boilerplate
+# Frontend Boilerplate
 
 Запуск проекта:
 ```
+$ nvm use 18
 $ npm ci
 $ npm run serve
 ```
+
+## Используемые технологии:
+- vue v3.3 (composition api)
+- webpack v5
+  - esbuild-loader v2
+- typescript v4.7
+- sass/scss v1.55
+- eslint v8
+- postcss v8
+  - autoprefixer v10.4
+  - pxtorem v6
+- axios v1.4
+- pinia v2.1
+- vue-i18n v9
+- vue-router v4
+  
+---
 
 ## Аргументы запуска
 аргумент | alias | default value | описание
@@ -12,20 +30,7 @@ $ npm run serve
 mode | m | production | опциональный параметр режима сборки `production` или `development`
 analyze| a | false | параметр подключения `WebpackBundleAnalyzerPlugin`
 
-## Используемые технологии:
-- vue v3 (options-api)
-- webpack v5
-  - esbuild-loader v2
-- typescript v4.7.3
-- sass\scss v1.55
-- eslint v8
-- postcss v8
-  - autoprefixer v10.4
-  - pxtorem v6
-
----
-
-## Структура выполнения проекта
+## Структурно-функциональная схема сборки проекта
 ```mermaid
 graph TD;
     npm(npm command) -- serve\build with flags --> runner(builder\runner.ts);
@@ -36,23 +41,19 @@ graph TD;
     webpack --> vue(start vue project);
 ```
 
+## Описание элементов сборщика проекта
+- [runner.ts](builder/devServerConfig.ts) - начальная точка запуска сборки
+- [webpack.config.ts](webpack.config.ts) - результирующий конфиг webpack-а
+- [devServerConfig](builder/devServerConfig.ts) - конфигуратор для dev сервера
+- [plugins](builder/plugins.ts) - конфигуратор для плагинов
+- [rules](builder/rules.ts) - конфигуратор для правил сборки
+- [args](builder/args.ts) - конфигуратор аргументов запуска
+- [paths](builder/paths.ts) - множество зарезолвленных путей к файлам и директориям для конфигураторов
+
 ---
-
-## Структура проекта
-- Папка [builder](#builder) - конфиг для webpack и сопутствующие модули
-- Папка src - дефолтная папка для проекта
-
----
-
-### Builder
-Файлы:
-- [webpack.config](webpack.config.ts) - результирующий конфиг для webpack
-- [getDevServerConfig](builder/devServerConfig.ts) - конфигуратор для dev server
-- [getPlugins](builder/plugins.ts) - конфигуратор для плагинов
-- [getRules](builder/rules.ts) - конфигуратор для правил сборки
 
 **Транспилятор**<br>
-В качестве транспилятора ts и минификатора использован [esbuild](https://esbuild.github.io) (альтернатива babel и terser),
+В качестве транспилятора ts и минификатора использовконфигуратор для правил сборкиан [esbuild](https://esbuild.github.io) (альтернатива babel и terser),
 данное решение было принято ненадобностью поддерживать старые бразуеры (в которые esbuild не может транспилить)
 и значительной скоростью сборки относительно babel.
 
