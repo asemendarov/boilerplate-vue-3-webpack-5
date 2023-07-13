@@ -1,10 +1,29 @@
 # Frontend Boilerplate
 
-Запуск проекта:
-```
-$ nvm use 18
+Запуск проекта в development режиме:
+
+```bash
+$ nvm use 18.14.1
 $ npm ci
 $ npm run serve
+```
+
+Запуск проекта в production режиме через docker:
+
+```bash
+$ docker build -t boilerplate-vue-3-webpack-5-prod -f production.Dockerfile .
+$ docker run -it -p 8080:80 --rm boilerplate-vue-3-webpack-5-prod
+
+# open localhost:8080
+```
+
+Запуск проекта в production режиме через docker compose:
+
+```bash
+$ docker compose build
+$ docker compose up
+
+# open localhost:8080
 ```
 
 ## Используемые технологии:

@@ -1,0 +1,17 @@
+# Согласовывать «!» с  skaffold.yaml, где отражены артефакты, 
+# которые должны синкаться при изменении 
+
+*
+!builder/**/*
+!src/**/*
+!public/**/*
+!.env*
+!*.js
+!*.ts
+!package.json
+!package-lock.json
+!tsconfig.json
+!.npmrc
+
+**/*.md
+**/*.gitkeep

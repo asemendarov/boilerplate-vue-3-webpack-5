@@ -5,8 +5,7 @@ import type { Target } from '@/types/builder';
 
 export function getDevServerConfig(target: Target): Configuration {
   const config: Configuration = {
-    host: '0.0.0.0',
-    port: 8080,
+    port: 80,
     allowedHosts: 'all',
     historyApiFallback: true,
 
@@ -18,7 +17,7 @@ export function getDevServerConfig(target: Target): Configuration {
     },
 
     client: {
-      webSocketURL: 'auto://0.0.0.0/ws',
+      // webSocketURL: 'auto://0.0.0.0/ws',
       progress: true,
     },
 

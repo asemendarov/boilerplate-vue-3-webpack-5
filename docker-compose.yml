@@ -1,0 +1,16 @@
+services:
+  prod:
+    build:
+      context: .
+      dockerfile: production.Dockerfile
+    ports:
+      - 8080:80
+
+  # dev:
+  #   build:
+  #     context: .
+  #     dockerfile: development.Dockerfile
+  #   ports:
+  #     - 8080:80
+  #   volumes:
+  #     - .:/app

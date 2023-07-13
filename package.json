@@ -19,7 +19,7 @@
     "serve": "ts-node ./builder/runner.ts serve",
     "build": "ts-node ./builder/runner.ts",
     "build:analyze": "ts-node ./builder/runner.ts -- -a",
-    "prepare": "husky install",
+    "prepare": "ts-node ./prepare.ts",
     "lint": "eslint --ext .ts,.vue ./src ./builder ./webpack.config.ts"
   },
   "devDependencies": {
