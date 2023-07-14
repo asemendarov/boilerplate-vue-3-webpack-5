@@ -1,0 +1,29 @@
+.expand {
+  &-enter-active,
+  &-leave-active {
+    transition: height .4s ease-in-out;
+    overflow: hidden;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    height: 0;
+  }
+}
+
+.fade-anim {
+  &-enter-active,
+  &-leave-active {
+    transition: .2s ease;
+  }
+
+  &-enter-from,
+  &-leave-to {
+    opacity: 0;
+  }
+
+  &-leave-from,
+  &-enter-to {
+    opacity: 1;
+  }
+}
