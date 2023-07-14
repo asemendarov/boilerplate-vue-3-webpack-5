@@ -25,7 +25,7 @@ const circleStyle = computed<StyleValue>(() => {
 </script>
 
 <style lang="scss">
-$loader: #FA8C16;
+$loader: #000;
 
 .v-loader {
   display: flex;
