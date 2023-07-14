@@ -38,6 +38,7 @@ module.exports = {
     'no-plusplus': OFF,
     'no-console': [WARNING, { allow: ['error'] }],
     'no-use-before-define': OFF,
+    'arrow-body-style': OFF,
     'max-len': [WARNING, {
       code: 120,
       tabWidth: 2,
