@@ -4,7 +4,7 @@
     "outDir": "./dist/",
     "paths": {
       "@/*": ["src/*"],
-      "@ui/*": ["src/components/common/*"]
+      "@ui/*": ["src/components/_ui/*"]
     },
     "sourceMap": true,
     "target": "ES2015",
