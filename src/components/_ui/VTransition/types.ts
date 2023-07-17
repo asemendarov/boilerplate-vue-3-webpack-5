@@ -20,3 +20,8 @@ type VTransitionGroupExpandProps = Pick<TransitionGroupProps, 'tag'> & {
 
 export type VTransitionProps = VTransitionDefaultProps | VTransitionExpandProps;
 export type VTransitionGroupProps = VTransitionGroupDefaultProps | VTransitionGroupExpandProps;
+
+export type VTransitionMixin = TransitionProps | TransitionGroupProps;
+export type VTransitionMixinMatcher = Partial<Record<VTransitionName, VTransitionMixin>>;
+
+export type VTransitionPropsForMixing = VTransitionProps | VTransitionGroupProps;

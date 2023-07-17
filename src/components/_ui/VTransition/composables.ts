@@ -1,6 +1,13 @@
 /* eslint-disable no-param-reassign */
+import { computed } from 'vue';
 
-import type { TransitionProps, TransitionGroupProps } from 'vue';
+import type { ComputedRef } from 'vue';
+
+import type {
+  VTransitionMixin,
+  VTransitionMixinMatcher,
+  VTransitionPropsForMixing,
+} from './types';
 
 function isHtmlElement(element: Element | HTMLElement): element is HTMLElement {
   return element instanceof HTMLElement;
@@ -9,7 +16,7 @@ function isHtmlElement(element: Element | HTMLElement): element is HTMLElement {
 /**
  * @see https://markus.oberlehner.net/blog/transition-to-height-auto-with-vue/
  */
-export const expandParams: TransitionProps | TransitionGroupProps = {
+const expandParams: VTransitionMixin = {
   onAfterEnter(element) {
     if (!isHtmlElement(element)) return;
 
@@ -53,4 +60,19 @@ export const expandParams: TransitionProps | TransitionGroupProps = {
       element.style.height = '0';
     });
   },
+};
+
+const mixinMatcher: VTransitionMixinMatcher = {
+  expand: expandParams,
+};
+
+export const useTransitionMixedParams = <T extends VTransitionPropsForMixing>(props: T): ComputedRef<T> => {
+  return computed(() => {
+    const mixin = mixinMatcher[props.name] ?? {};
+
+    return {
+      ...props,
+      ...mixin,
+    };
+  });
 };
