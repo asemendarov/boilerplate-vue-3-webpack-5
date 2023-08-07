@@ -67,10 +67,5 @@
     "vue-i18n": "^9.2.2",
     "vue-router": "^4.2.2"
   },
-  "engines": {
-    "node": "18.14.1",
-    "npm": "9.3.1",
-    "yarn": "You must use NPM v9.3.1 (node v18.14.1) to install, not Yarn"
-  },
   "license": "MIT"
 }
